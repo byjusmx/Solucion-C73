@@ -286,12 +286,12 @@ export default class TransactionScreen extends React.Component {
               source={require("../assets/cycle.jpg")}
               style={{ width: 200, height: 200 }}
             />
-            <Text style={{ textAlign: "center", fontSize: 30 }}>LET'S RIDE</Text>
+            <Text style={{ textAlign: "center", fontSize: 30 }}>VAMOS A MONTAR</Text>
           </View>
           <View style={styles.inputView}>
             <TextInput
               style={styles.inputBox}
-              placeholder="Cycle Id"
+              placeholder="Id de la bicicleta"
               onChangeText={text => {
                 this.setState({
                   scannedCycleId: text
@@ -305,14 +305,14 @@ export default class TransactionScreen extends React.Component {
                 this.getCameraPermissions("CycleId");
               }}
             >
-              <Text style={styles.buttonText}>Scan</Text>
+              <Text style={styles.buttonText}>Escanear</Text>
             </TouchableOpacity>
           </View>
 
           <View style={styles.inputView}>
             <TextInput
               style={styles.inputBox}
-              placeholder="Student Id"
+              placeholder="Id del alumno"
               onChangeText={text => {
                 this.setState({
                   scannedStudentId: text
@@ -326,7 +326,7 @@ export default class TransactionScreen extends React.Component {
                 this.getCameraPermissions("StudentId");
               }}
             >
-              <Text style={styles.buttonText}>Scan</Text>
+              <Text style={styles.buttonText}>Escanear</Text>
             </TouchableOpacity>
           </View>
           <Text style={styles.transactionAlert}>
@@ -338,7 +338,7 @@ export default class TransactionScreen extends React.Component {
               var transactionMessage = this.handleTransaction();
             }}
           >
-            <Text style={styles.submitButtonText}>Submit</Text>
+            <Text style={styles.submitButtonText}>Enviar</Text>
           </TouchableOpacity>
         </KeyboardAvoidingView>
       );
