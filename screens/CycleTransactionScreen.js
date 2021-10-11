@@ -112,14 +112,14 @@ export default class TransactionScreen extends React.Component {
   };
 
   initiateCycleReturn = async () => {
-    //add a transaction
+    //agrega una transacción
     db.collection("transactions").add({
       studentId: this.state.scannedStudentId,
       cycleId: this.state.scannedCycleId,
       date: firebase.firestore.Timestamp.now().toDate(),
       transactionType: "Return"
     });
-    //change cycle status
+    //cambia el estado de la bicicleta
    var cycleissue = db.collection("cycle")
    cycleissue.where("cycleId","==", this.state.scannedCycleId).get()
    .then((snapshot)=>{
@@ -195,7 +195,7 @@ export default class TransactionScreen extends React.Component {
         scannedCycleId: ""
       });
       isStudentEligible = false;
-      Alert.alert("The student id doesn't exist in the database!");
+      Alert.alert("La id del alumno no existe en la base de datos");
     } else {
       studentRef.docs.map(doc => {
         var student = doc.data();
@@ -203,7 +203,7 @@ export default class TransactionScreen extends React.Component {
           isStudentEligible = true;
         } else {
           isStudentEligible = false;
-          Alert.alert("The student has already issued 2 cycles!");
+          Alert.alert("El alumno ya pidió 2 bicicletas");
           this.setState({
             scannedStudentId: "",
             scannedCycleId: ""
@@ -228,7 +228,7 @@ export default class TransactionScreen extends React.Component {
         isStudentEligible = true;
       } else {
         isStudentEligible = false;
-        Alert.alert("The cycle wasn't issued by this student!");
+        Alert.alert("La bicicleta no fue emitida por este alumno");
         this.setState({
           scannedStudentId: "",
           scannedCycleId: ""
@@ -242,7 +242,7 @@ export default class TransactionScreen extends React.Component {
     var transactionType = await this.checkCycleEligibility();
 
     if (!transactionType) {
-      Alert.alert("The cycle doesn't exist in the database!");
+      Alert.alert("La bicicleta no existe en la base de datos");
       this.setState({
         scannedStudentId: "",
         scannedCycleId: ""
@@ -251,16 +251,16 @@ export default class TransactionScreen extends React.Component {
       var isStudentEligible = await this.checkStudentEligibilityForCycleIssue();
       if (isStudentEligible) {
         this.initiateCycleIssue();
-        Alert.alert("Cycle issued to the student!");
+        Alert.alert("Bicicleta emitida al alumno");
       }
     } else {
       var isStudentEligible = await this.checkStudentEligibilityForReturn();
       if (isStudentEligible) {
         this.initiateCycleReturn();
-       // Alert("Thank you for returning it to the Schoo!");
-       // alert("Thank you for returning it to the Schoo!");
-       // Alert.alert(Thank you for returning it to the Schooy!);
-        Alert.alert("Thank you for returning it to the Schoo!");
+       // Alert("Gracias por devolver la bicicleta");
+       // alert("Gracias por devolver la bicicleta");
+       // Alert.alert(Gracias por devolver la bicicleta);
+        Alert.alert("Gracias por devolver la bicicleta");
 
       }
     }
